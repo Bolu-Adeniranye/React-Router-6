@@ -1,4 +1,4 @@
-import bgImg from "../images/about-hero.png"
+import bgImg from "../../images/about-hero.png"
 import { Link } from "react-router-dom"
 
 export default function About() {
