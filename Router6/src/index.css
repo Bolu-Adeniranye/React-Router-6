@@ -3,21 +3,16 @@
 }
 
 html, body {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
-    background-color: #FFF7ED;
+    width: 100%;
+    height: 100%;
     font-family: "Inter", sans-serif;
-    max-width: 1400px;
+    background-color: #FFF7ED;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
+.site-wrapper {
+    position: relative;
 }
 
 header {
@@ -25,8 +20,7 @@ header {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin:  0 auto;
-
+    margin: 0 auto;
 }
 
 header .site-logo {
@@ -49,6 +43,11 @@ header a:hover {
     text-decoration: underline;
 }
 
+a.active-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
+}
 
 .link-button {
     display: inline-block;
@@ -67,17 +66,15 @@ header a:hover {
     transform: translate(1px, 1px);
 }
 
-/*** HOME PAGE ***/
+/* HOME PAGE */
 .home-container {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./images/home-hero.png") no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     min-height: 500px;
     color: white;
     padding: 45px 23px;
     max-width: 1280px;
+    margin: 0 auto;
 }
 
 .home-container h1 {
@@ -110,19 +107,15 @@ header a:hover {
     transform: translate(1px, 1px);
 }
 
-
-/*** ABOUT PAGE ***/
-
+/* ABOUT PAGE */
 .about-page-container {
     display: flex;
     flex-direction: column;
-    max-width: 900px;
-    min-width: 500px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 3rem;
-    max-width: 1280px;
-
 }
+
 .about-hero-image {
     max-width: 100%;
 }
@@ -161,15 +154,11 @@ header a:hover {
     border-radius: 10px;
 }
 
-
-
-
-
-/*** VAN PAGES ***/
+/* VAN PAGES */
 .van-list-container {
     padding-inline: 23px;
     max-width: 1280px;
-
+    margin: 0 auto;
 }
 
 .van-list {
@@ -180,13 +169,13 @@ header a:hover {
     margin-top: 57px;
 }
 
-
 .van-info {
     text-align: center;
 }
+
 .van-tile a {
     color: #161616;
-    text-decoration: none;    
+    text-decoration: none;
 }
 
 .van-tile img {
@@ -202,7 +191,6 @@ header a:hover {
 .van-type {
     height: 34px;
     padding: 6px 26px;
-    font-style: normal;
     font-weight: 500;
     border: none;
     border-radius: 5px;
@@ -210,6 +198,7 @@ header a:hover {
     color: #4D4D4D;
     transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
     width: 100px;
+    margin: 5px;
 }
 
 .van-type:hover {
@@ -224,15 +213,18 @@ header a:hover {
     color: #FFEAD0;
 }
 
-.van-type.simple:hover, .van-type.simple.selected {
+.van-type.simple:hover,
+.van-type.simple.selected {
     background-color: #E17654;
 }
 
-.van-type.rugged:hover, .van-type.rugged.selected {
+.van-type.rugged:hover,
+.van-type.rugged.selected {
     background-color: #115E59;
 }
 
-.van-type.luxury:hover, .van-type.luxury.selected {
+.van-type.luxury:hover,
+.van-type.luxury.selected {
     background-color: #161616;
 }
 
@@ -240,7 +232,6 @@ header a:hover {
     margin-left: -20px;
     height: 34px;
     padding: 6px 26px;
-    font-style: normal;
     font-weight: 500;
     border: none;
     border-radius: 5px;
@@ -248,11 +239,6 @@ header a:hover {
     background-color: transparent;
     color: #4D4D4D;
 }
-
-i[class*='van-type-'] {
-    padding: 7px 14px;
-}
-
 
 .van-detail-container {
     padding: 27px;
@@ -262,10 +248,6 @@ i[class*='van-type-'] {
     color: black;
     text-decoration: none;
 }
-
-/* .van-detail-container .back-button:visited {
-    
-} */
 
 .van-detail-container .back-button span {
     text-decoration: underline;
@@ -310,6 +292,7 @@ i[class*='van-type-'] {
 .host-nav {
     display: flex;
     max-width: 1280px;
+    margin: 0 auto;
 }
 
 .host-nav a {
@@ -323,4 +306,150 @@ i[class*='van-type-'] {
     color: #161616;
     text-decoration: underline;
     font-weight: 600;
+}
+
+/* HOST VANS PAGE */
+
+.host-van-link-wrapper {
+    color: unset;
+    text-decoration: unset;
+}
+
+.host-vans-list {
+    padding-inline: 26px;
+}
+
+.host-vans-title {
+    padding-inline: 26px;
+}
+
+.host-van-single {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 15px;
+    padding-block: 18px;
+    padding-left: 24px;
+}
+
+.host-van-single > img {
+    height: 70px;
+    border-radius: 5px;
+    margin-right: 17px;
+}
+
+.host-van-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-block: 10px;
+}
+
+.host-van-info p {
+    margin-block: 10px;
+}
+
+
+.host-van-detail-layout-container {
+    background-color: white;
+    padding: 24px;
+    margin: 30px 26px;
+}
+
+.host-van-detail {
+    display: flex;
+    align-items: center;
+}
+
+.host-van-detail > img {
+    height: 160px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.host-van-detail-info-text > h3 {
+    margin-top: 24px;
+    margin-bottom: 5px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.host-van-detail-info-text > h4 {
+    font-size: 20px;
+    margin-block: 0;
+}
+
+.host-van-detail-nav {
+    display: flex;
+    margin-block: 25px;
+}
+
+.host-van-detail-nav a {
+    text-decoration: none;
+    color: #4D4D4D;
+    font-weight: 500;
+    padding: 5px 20px;
+}
+
+.host-van-detail-nav a:first-of-type {
+    text-decoration: none;
+    color: #4D4D4D;
+    font-weight: 500;
+    padding: 5px 15px;
+    margin-left: -15px;
+}
+
+.host-van-detail-nav a:hover {
+    color: #161616;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.host-van-detail-info > h4 {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+}
+.host-van-detail-info > h4 > span {
+    font-weight: 500;
+}
+
+.host-van-price {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.host-van-price > span {
+    font-size: 16px;
+    color: #4D4D4D;
+}
+
+.host-van-detail-image {
+    height: 100px;
+    border-radius: 5px;
+}
+
+/* Ensure footer stays at the bottom */
+body, #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    width: 100%;
+    background-color: #161616;
+    color: #AAAAAA;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 100%;
 }

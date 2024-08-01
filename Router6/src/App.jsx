@@ -8,6 +8,11 @@ import Reviews from "./components/Host/Reviews"
 import Income from "./components/Host/Income"
 import HostLayout from "./components/HostLayout"
 import Dashboard from "./components/Host/Dashboard"
+import HostVans from "./components/Host/HostVans"
+import HostVanDetail from "./components/Host/HostVanDetail"
+import HostVanPhotos from "./components/Host/HostVanPhotos"
+import HostVanPricing from "./components/Host/HostVanPricing"
+import HostVanInfo from "./components/Host/HostVanInfo"
 
 export default function App() {
     return (
@@ -19,11 +24,17 @@ export default function App() {
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
           
-            <Route path="host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="reviews" element={<Reviews />} />
-            </Route>
+          <Route path="host" element={<HostLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="income" element={<Income />} />
+          <Route path="reviews" element={<Reviews />} />
+          <Route path="vans" element={<HostVans />} />
+          <Route path="vans/:id" element={<HostVanDetail />}>
+            <Route index element={<HostVanInfo/>} />
+            <Route path="pricing" element={<HostVanPricing />} />
+            <Route path="photos" element={<HostVanPhotos />} />
+          </Route>
+          </Route>
           </Route>
         </Routes>
       </BrowserRouter>
