@@ -4,14 +4,41 @@ import { Link, useSearchParams } from "react-router-dom"
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [vans, setVans] = useState([])
+    const [loading, setLoading] = useState(false)
         
     const typeFilter = searchParams.get("type")
 
+    async function getVans() {
+        const res = await fetch("/api/vans")
+        if (!res.ok) {
+            throw {
+                message: "Failed to fetch vans", 
+                statusText: res.statusText,
+                status: res.status
+            }
+        }
+        const data = await res.json()
+        return data.vans
+    }
     
     useEffect(() => {
-        fetch("/api/vans")
-            .then(res => res.json())
-            .then(data => setVans(data.vans))
+        async function loadVans() {
+            setLoading(true)
+            try {
+                    const data = await getVans()
+                    setVans(data)
+            } catch (err) {
+                return(
+                    <>
+                        <h1>There was an error, please refresh your browser</h1>
+                        {console.log(err)}
+                    </>
+                )
+            }
+            finally { setLoading(false)}
+        }
+
+        loadVans()
     }, [])
 
     const displayedVans = typeFilter
@@ -48,6 +75,13 @@ export default function Vans() {
             }
             return prevParams
         })
+    }
+
+    if (loading) {
+        return <h1 aria-live="polite">Loading...</h1>
+    }
+    if (!loading) {
+        return <h1 aria-live="assertive">There was an error</h1>
     }
 
 

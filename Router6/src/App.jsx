@@ -13,7 +13,9 @@ import HostVanDetail from "./components/Host/HostVanDetail"
 import HostVanPhotos from "./components/Host/HostVanPhotos"
 import HostVanPricing from "./components/Host/HostVanPricing"
 import HostVanInfo from "./components/Host/HostVanInfo"
+import NotFound
 
+from "./components/Pages/NotFound"
 export default function App() {
     return (
       <BrowserRouter>
@@ -23,6 +25,7 @@ export default function App() {
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
+        <Route path="*" element={<NotFound />}/>
           
           <Route path="host" element={<HostLayout />}>
           <Route index element={<Dashboard />} />
