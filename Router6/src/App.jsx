@@ -13,9 +13,10 @@ import HostVanDetail from "./components/Host/HostVanDetail"
 import HostVanPhotos from "./components/Host/HostVanPhotos"
 import HostVanPricing from "./components/Host/HostVanPricing"
 import HostVanInfo from "./components/Host/HostVanInfo"
-import NotFound
+import NotFound from "./components/Pages/NotFound"
+import Login from "./components/Pages/Login"
+import AuthRequired from "./components/AuthRequired"
 
-from "./components/Pages/NotFound"
 export default function App() {
     return (
       <BrowserRouter>
@@ -23,10 +24,17 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
-          <Route path="vans/:id" element={<VanDetail />} />
+          <Route
+            path="login"
+            element={<Login />}
+          />
+            <Route path="vans" element={<Vans />} />
+          <Route element={<AuthRequired />}>
+            <Route path="vans/:id" element={<VanDetail />} />
+          </Route>
         <Route path="*" element={<NotFound />}/>
           
+          <Route element={<AuthRequired />}>
           <Route path="host" element={<HostLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="income" element={<Income />} />
@@ -36,6 +44,7 @@ export default function App() {
             <Route index element={<HostVanInfo/>} />
             <Route path="pricing" element={<HostVanPricing />} />
             <Route path="photos" element={<HostVanPhotos />} />
+          </Route>
           </Route>
           </Route>
           </Route>

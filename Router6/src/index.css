@@ -500,6 +500,14 @@ a.active-link {
     font-family: "Inter", sans-serif;
 }
 
+.login-icon {
+    width: 50px;
+}
+
+.login-first {
+    color: red;
+}
+
 /* Ensure footer stays at the bottom */
 body, #root {
     display: flex;

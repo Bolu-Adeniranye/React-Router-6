@@ -1,6 +1,20 @@
 import { useState, useEffect } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 
+async function getVans(id) {
+    const url = id ? `/api/vans/${id}` : "/api/vans"
+    const res = await fetch(url)
+    if (!res.ok) {
+        throw {
+            message: "Failed to fetch vans",
+            statusText: res.statusText,
+            status: res.status
+        }
+    }
+    const data = await res.json()
+    return data.vans
+}
+
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [vans, setVans] = useState([])
@@ -8,19 +22,6 @@ export default function Vans() {
         
     const typeFilter = searchParams.get("type")
 
-    async function getVans() {
-        const res = await fetch("/api/vans")
-        if (!res.ok) {
-            throw {
-                message: "Failed to fetch vans", 
-                statusText: res.statusText,
-                status: res.status
-            }
-        }
-        const data = await res.json()
-        return data.vans
-    }
-    
     useEffect(() => {
         async function loadVans() {
             setLoading(true)
@@ -80,10 +81,6 @@ export default function Vans() {
     if (loading) {
         return <h1 aria-live="polite">Loading...</h1>
     }
-    if (!loading) {
-        return <h1 aria-live="assertive">There was an error</h1>
-    }
-
 
     return (
         <div className="van-list-container">
