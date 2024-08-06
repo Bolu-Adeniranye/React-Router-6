@@ -1,19 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useSearchParams } from "react-router-dom"
+import { getVans } from "../api"
 
-async function getVans(id) {
-    const url = id ? `/api/vans/${id}` : "/api/vans"
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: res.statusText,
-            status: res.status
-        }
-    }
-    const data = await res.json()
-    return data.vans
-}
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()

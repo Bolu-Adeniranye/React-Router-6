@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { Outlet, NavLink } from "react-router-dom"
 
 export default function HostLayout() {
@@ -8,6 +9,10 @@ export default function HostLayout() {
         color: "#161616"
     }
     
+
+    useEffect(() => {
+        
+    })
     return (
         <>
             <nav className="host-nav">

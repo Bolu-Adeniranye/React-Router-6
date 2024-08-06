@@ -1,29 +1,16 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import { loginUser } from "../api"
 
-async function loginUser(creds) {
-    const res = await fetch("/api/login",
-        { method: "post", body: JSON.stringify(creds) }
-    )
-    const data = await res.json()
-
-    if (!res.ok) {
-        throw {
-            message: data.message,
-            statusText: res.statusText,
-            status: res.status
-        }
-    }
-
-    return data
-}
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
     const [status, setStatus] = useState("idle")
     const [error, setError] = useState(null)
+
     const location = useLocation()
     const navigate = useNavigate()
+    const from = location.state?.from || "/host"
     
 
     function handleSubmit(e) {
@@ -32,7 +19,8 @@ export default function Login() {
             .then(data => {
                 console.log(data)
                 setError(null)
-                navigate("/host", {replace: true})
+                localStorage.setItem("loggedin", data)
+                navigate(from, {replace: true})
             })
             .catch(err => {
                 setError(err)

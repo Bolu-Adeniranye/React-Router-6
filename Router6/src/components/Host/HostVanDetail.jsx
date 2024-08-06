@@ -1,20 +1,6 @@
 import {useEffect, useState} from "react"
 import { useParams, Link, Outlet, NavLink } from "react-router-dom"
-
-async function getHostVans(id) {
-    const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: res.statusText,
-            status: res.status
-        }
-    }
-    const data = await res.json()
-    return data.vans
-}
-
+import { getHostVans } from "../api"
 
 export default function HostVanDetail() {
 
